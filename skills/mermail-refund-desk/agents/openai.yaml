@@ -1,0 +1,11 @@
+interface:
+  display_name: "Mermail Refund Desk"
+  short_description: "Triage refund emails against a written policy; file, flag and draft, never pay or send"
+  default_prompt: "Use $mermail-refund-desk to go through this week's refund requests with our refund policy."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "mermail"
+      description: "Mermail workspace and mailbox MCP server"
+      transport: "streamable_http"
+      url: "https://console.mermail.app/mcp"
