@@ -21,8 +21,11 @@ This companion skill owns no Mermail tools. Every tool below belongs to an offic
 | `move_email` | `mermail-manage-inbox` | file each request | internal write |
 | `update_email` | `mermail-manage-inbox` | star requests the owner must look at | internal write |
 | `save_draft` | `mermail-compose-email` | one reply draft per request | internal write |
+| `search_composio_tools` | `mermail-composio` | find a Shopify order lookup (optional) | read |
+| `get_composio_tool_schema` | `mermail-composio` | confirm that tool reads and never writes | read |
+| `execute_composio_tool` | `mermail-composio` | one read-only Shopify order lookup, after the user approves the exact call | external effect (a read tool, nothing else) |
 
-Not used, on purpose: `send_email`, `reply_to_email`, `forward_email`, `schedule_email_send` (external effects), every `paybox_*` and wallet tool, `download_attachment`, and all delete tools.
+Not used, on purpose: `send_email`, `reply_to_email`, `forward_email`, `schedule_email_send` (external effects), every `paybox_*` and wallet tool, `download_attachment`, all delete tools, and any Composio tool that writes (refund, cancel, create, update, delete, close, fulfil, adjust).
 
 ## Examples
 

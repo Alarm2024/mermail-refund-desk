@@ -30,7 +30,12 @@ for (const req of ["display_name:", "short_description:", `default_prompt: "Use 
 }
 
 // Tools this skill may call: reads and internal writes, nothing else.
-const allowed = new Set(["list_mailboxes", "search_emails", "get_email", "get_email_context", "list_folders", "create_folder", "move_email", "update_email", "save_draft"]);
+const allowed = new Set(["list_mailboxes", "search_emails", "get_email", "get_email_context", "list_folders", "create_folder", "move_email", "update_email", "save_draft",
+  "search_composio_tools", "get_composio_tool_schema", "execute_composio_tool"]);
+// The one Composio call must stay gated to reads and to the user's approval.
+if (!/never one containing REFUND, CANCEL, CREATE, UPDATE, DELETE/.test(md) || !/after the user approves that exact call/.test(md)) {
+  errors.push("SKILL.md must keep execute_composio_tool read-only and approval-gated");
+}
 const tools = await readFile(path.join(dir, "references", "tools.md"), "utf8");
 const table = tools.split("## Tools used")[1].split("\n\n")[1];
 for (const m of table.matchAll(/^\| `([a-z_]+)`/gm)) {

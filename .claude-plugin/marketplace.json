@@ -1,0 +1,15 @@
+{
+  "name": "refund-desk",
+  "description": "Refund Desk for Mermail, from elghaly.dev: refund-inbox triage that never pays or sends.",
+  "owner": {
+    "name": "elghaly.dev",
+    "url": "https://elghaly.dev"
+  },
+  "plugins": [
+    {
+      "name": "refund-desk",
+      "source": "./",
+      "description": "Refund Desk for Mermail: triage refund emails against a written policy; file, flag and draft, never pay or send."
+    }
+  ]
+}

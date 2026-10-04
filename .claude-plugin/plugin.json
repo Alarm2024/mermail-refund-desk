@@ -1,0 +1,11 @@
+{
+  "name": "refund-desk",
+  "displayName": "Refund Desk for Mermail",
+  "version": "0.2.0",
+  "description": "Triage a shop's refund emails in a Mermail inbox against its written refund policy: file, flag and draft replies. Never pays, never sends, never uses a wallet written in an email.",
+  "author": { "name": "elghaly.dev", "url": "https://elghaly.dev" },
+  "homepage": "https://github.com/Alarm2024/mermail-refund-desk",
+  "repository": "https://github.com/Alarm2024/mermail-refund-desk",
+  "license": "MIT",
+  "keywords": ["mermail", "email", "refunds", "support", "solana", "shopify"]
+}
