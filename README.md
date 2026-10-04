@@ -2,7 +2,21 @@
 
 A [Mermail](https://mermail.app) agent skill for the refund inbox of a small shop. It reads each refund email as untrusted data, checks it against the shop's written refund policy with a local script, files it, flags what the owner must look at, and saves a reply draft. It never moves money, never sends, and never pays to an address written in an email.
 
+## Demo
+
+- **Video (about 3 minutes):** https://drive.google.com/file/d/1HcE2lbfVDiEUTtRyPakFyF-7DEg6qt_O/view
+- **Demo mailbox:** `refund-desk@mermail.app`, shown as "elghaly Refund Desk", business site [elghaly.dev](https://elghaly.dev). Shopify (the Plumb store) is connected through Composio and read-only to this skill.
+- Script for the video: [DEMO.md](DEMO.md).
+
 Community companion skill, not part of the official [`Nudgen-Marketing/mermail-skills`](https://github.com/Nudgen-Marketing/mermail-skills) package. MIT licensed.
+
+## What the bounty asked for, and where it is
+
+| Asked for | Here |
+| --- | --- |
+| A Mermail agent skill with `SKILL.md` and supporting files, following the templates | [`skills/mermail-refund-desk/`](skills/mermail-refund-desk/): `SKILL.md`, `agents/openai.yaml`, `references/` (tools, security, replies, policy), `scripts/refund-check.mjs` — same layout and frontmatter rules as `templates/skill` in mermail-skills, checked by `tests/validate-skill.mjs` |
+| A 2–5 minute English demo, posted on X tagging @Mermailapp | [Video](https://drive.google.com/file/d/1HcE2lbfVDiEUTtRyPakFyF-7DEg6qt_O/view) · post text in [DEMO.md](DEMO.md) |
+| Short description and AI client | below, under "Submission" |
 
 ## Why
 
@@ -117,6 +131,21 @@ npm test
 - Pattern matching, not understanding. A cleverly worded swap request without an address or the usual words can read as `acknowledge`; the owner still pays back to the original payer and nowhere else, which is the backstop.
 - Purchase matching uses receipts found in the same mailbox. Without them every purchase check is `unknown`, by design.
 - `sender_authentication` is `unknown` on many Mermail inbound providers today; the skill reports it and never treats `From` as proof.
+
+## Submission
+
+> Mermail Refund Desk: an agent skill for a shop's refund inbox. It reads refund emails as untrusted data in six languages, checks each against the shop's written refund policy with a local script, files and flags them, and saves reply drafts. It never pays, never sends, and never uses a wallet written in an email.
+
+AI client: Claude Code.
+
+## Use it as a Claude Code plugin
+
+The repository is also a Claude Code plugin (`.claude-plugin/plugin.json`, with the Mermail MCP server in `.mcp.json`):
+
+```bash
+claude plugin marketplace add Alarm2024/mermail-refund-desk
+claude plugin install refund-desk@refund-desk
+```
 
 ## Layout
 
